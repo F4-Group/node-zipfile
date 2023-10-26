@@ -9,10 +9,10 @@
     "unzip",
     "zlib"
   ],
-  "url": "http://github.com/mapbox/node-zipfile",
+  "url": "https://github.com/F4-Group/node-zipfile",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mapbox/node-zipfile.git"
+    "url": "git+https://github.com/F4-Group/node-zipfile.git"
   },
   "author": "Dane Springmeyer <dane@dbsgeo.com>",
   "contributors": [],
@@ -25,23 +25,25 @@
   },
   "devDependencies": {
     "@mapbox/cloudfriend": "^1.9.1",
-    "aws-sdk": "^2.266.1",
     "d3-queue": "^3.0.7",
     "mkdirp": "~0.5.1",
-    "mocha": "~5.2.0"
+    "mocha": "~5.2.0",
+    "node-pre-gyp-github": "^1.4.4"
   },
   "bin": {
     "unzip.js": "./bin/unzip.js"
   },
   "scripts": {
     "test": "mocha -R spec",
-    "install": "node-pre-gyp install --fallback-to-build"
+    "install": "node-pre-gyp install --fallback-to-build",
+    "package": "./node_modules/.bin/node-pre-gyp package",
+    "publish": "node-pre-gyp-github publish"
   },
   "binary": {
     "module_name": "zipfile",
     "module_path": "./lib/binding/{node_abi}-{platform}-{arch}",
-    "host": "https://mapbox-node-binary.s3.amazonaws.com",
-    "remote_path": "./{name}/v{version}/{toolset}/",
+    "host": "https://github.com/F4-Group/node-zipfile/releases/download/",
+    "remote_path": "{version}",
     "package_name": "{node_abi}-{platform}-{arch}.tar.gz"
   }
 }
